@@ -1,0 +1,9 @@
+.db-list-element:hover{
+  background-color: greenyellow;
+  color:black;
+  cursor: pointer;
+}
+
+div.inline {
+  float:left;
+}

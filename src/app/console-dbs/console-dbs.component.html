@@ -1,0 +1,28 @@
+<div *ngIf="dbs">
+
+
+  <div class="inline">
+    <ul>
+      DBs:<br/>
+      ----------
+     <li (click)="getCollection($event)" class="db-list-element" *ngFor="let db of dbs">
+       {{db}}
+     </li>
+   </ul>
+  </div>
+
+  <div *ngIf="colls" class="inline">
+    <ul>
+      COLLECTIONs:<br/>
+      ----------
+      <li  class="db-list-element" *ngFor="let coll of colls">
+        {{coll}}
+      </li>
+    </ul>
+  </div>
+
+  <div class="inline">
+
+  </div>
+
+</div>
