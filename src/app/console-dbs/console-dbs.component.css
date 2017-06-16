@@ -4,6 +4,11 @@
   cursor: pointer;
 }
 
+.doc-list-element:hover{
+  background-color: greenyellow;
+  color:black;
+}
+
 div.inline {
   float:left;
 }

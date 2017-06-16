@@ -24,10 +24,11 @@
   <div *ngIf="docs" class="inline">
     DOCUMENTs:<br/>
     ----------
-    <li  class="db-list-element" *ngFor="let doc of docs">
-      {{doc|json}}
-    </li>
-
+    <ul>
+      <li  class="doc-list-element" *ngFor="let doc of docs">
+        {{doc|json}}
+      </li>
+    </ul>
   </div>
 
 </div>
