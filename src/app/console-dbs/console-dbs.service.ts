@@ -17,4 +17,11 @@ export class ConsoleDbsService{
     return this.http.post('http://localhost:9000/getCollections', {databaseName: databaseName})
       .map( resp => resp.json());
   }
+
+
+  public findAll(databaseName: string, collectionName: string) {
+    return this.http.post('http://localhost:9000/findAll',
+      {databaseName: databaseName, collectionName: collectionName}
+      ).map( resp => resp.json());
+  }
 }

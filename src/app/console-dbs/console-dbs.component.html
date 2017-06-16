@@ -15,13 +15,18 @@
     <ul>
       COLLECTIONs:<br/>
       ----------
-      <li  class="db-list-element" *ngFor="let coll of colls">
+      <li  (click)="findAll($event)" class="db-list-element" *ngFor="let coll of colls">
         {{coll}}
       </li>
     </ul>
   </div>
 
-  <div class="inline">
+  <div *ngIf="docs" class="inline">
+    DOCUMENTs:<br/>
+    ----------
+    <li  class="db-list-element" *ngFor="let doc of docs">
+      {{doc|json}}
+    </li>
 
   </div>
 

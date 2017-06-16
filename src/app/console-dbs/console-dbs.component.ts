@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Http} from '@angular/http';
-import {ConsoleDbsService} from "./console-dbs.service";
+import {ConsoleDbsService} from './console-dbs.service';
 
 @Component({
   selector: 'app-console-dbs',
@@ -11,20 +10,34 @@ export class ConsoleDbsComponent implements OnInit {
 
   dbs: any[];
   colls: any[];
+  docs: any[];
+
+  databaseName: string;
+  collectionName: string;
 
   constructor(private consoleDbsSrv: ConsoleDbsService) { }
 
   ngOnInit() {
     this.consoleDbsSrv.getDatabases().subscribe(
-      response => { this.dbs = response }
+      response => { this.dbs = response; }
     );
   }
 
 
   getCollection(e) {
-    let databaseName = e.srcElement.innerText;
-    this.consoleDbsSrv.getCollection(databaseName).subscribe(
+    this.docs = null;
+    this.colls = null;
+    this.databaseName = e.srcElement.innerText;
+
+    this.consoleDbsSrv.getCollection(this.databaseName).subscribe(
       response => { this.colls = response; }
+    );
+  }
+
+  findAll(e) {
+    this.collectionName = e.srcElement.innerText;
+    this.consoleDbsSrv.findAll(this.databaseName, this.collectionName).subscribe(
+      response => { this.docs = response; }
     );
   }
 
