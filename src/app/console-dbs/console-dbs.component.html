@@ -15,8 +15,17 @@
     <ul>
       COLLECTIONs:<br/>
       ----------
-      <li  (click)="findAll($event)" class="db-list-element" *ngFor="let coll of colls">
+      <li  (click)="showButtons($event)" class="db-list-element" *ngFor="let coll of colls">
         {{coll}}
+      </li>
+    </ul>
+  </div>
+
+
+  <div *ngIf="isButtonsShow" class="inline">
+    <ul class="button-list">
+      <li (click)="findAll()" class="button-list-element">
+        findAll()
       </li>
     </ul>
   </div>

@@ -9,6 +9,26 @@
   color:black;
 }
 
+.button-list-element{
+  border: 1px solid greenyellow;
+  padding: 2px;
+  cursor: pointer;
+}
+
+.button-list-element:hover{
+  border: 1px solid black;
+  background-color: greenyellow;
+  color:black;
+  cursor: pointer;
+  padding: 2px;
+}
+
+.button-list{
+  list-style-type: none;
+}
+
 div.inline {
   float:left;
 }
+
+

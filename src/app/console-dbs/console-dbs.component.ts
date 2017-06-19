@@ -14,10 +14,12 @@ export class ConsoleDbsComponent implements OnInit {
 
   databaseName: string;
   collectionName: string;
+  isButtonsShow: boolean;
 
   constructor(private consoleDbsSrv: ConsoleDbsService) { }
 
   ngOnInit() {
+    this.isButtonsShow = false;
     this.consoleDbsSrv.getDatabases().subscribe(
       response => { this.dbs = response; }
     );
@@ -27,6 +29,7 @@ export class ConsoleDbsComponent implements OnInit {
   getCollection(e) {
     this.docs = null;
     this.colls = null;
+    this.isButtonsShow = false;
     this.databaseName = e.srcElement.innerText;
 
     this.consoleDbsSrv.getCollection(this.databaseName).subscribe(
@@ -34,11 +37,16 @@ export class ConsoleDbsComponent implements OnInit {
     );
   }
 
-  findAll(e) {
-    this.collectionName = e.srcElement.innerText;
+  findAll() {
     this.consoleDbsSrv.findAll(this.databaseName, this.collectionName).subscribe(
       response => { this.docs = response; }
     );
+  }
+
+  showButtons(e) {
+    this.isButtonsShow = false;
+    this.collectionName = e.srcElement.innerText;
+    this.isButtonsShow = true;
   }
 
 }
