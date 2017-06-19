@@ -3,7 +3,7 @@ import {Http} from '@angular/http';
 import 'rxjs/add/operator/map';
 
 @Injectable()
-export class ConsoleDbsService{
+export class ConsoleDbsService {
 
   constructor(private http: Http) {}
 
@@ -25,9 +25,17 @@ export class ConsoleDbsService{
       ).map( resp => resp.json());
   }
 
+  public find(databaseName: string, collectionName: string, query: any) {
+    return this.http.post('http://localhost:9000/find',
+      {databaseName: databaseName, collectionName: collectionName, query: query}
+    ).map( resp => resp.json());
+  }
+
   public count(databaseName: string, collectionName: string) {
     return this.http.post('http://localhost:9000/count',
       {databaseName: databaseName, collectionName: collectionName}
     ).map( resp => resp.json());
   }
+
+
 }

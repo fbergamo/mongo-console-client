@@ -26,6 +26,15 @@
 }
 
 
+.input-list-element{
+  background-color: black;
+  border: 0 solid;
+  color: greenyellow;
+  font-family: inherit;
+  outline:none;
+}
+
+
 .counter-panel{
   margin-top:20px;
   padding:10px;
@@ -33,6 +42,16 @@
 
 .button-list{
   list-style-type: none;
+}
+
+
+.error-div{
+  color:red;
+  clear:both;
+}
+
+.docs-div{
+  clear:both;
 }
 
 div.inline {

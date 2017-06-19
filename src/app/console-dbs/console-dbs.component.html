@@ -13,7 +13,7 @@
 
   <div *ngIf="colls" class="inline">
     <ul>
-      COLLECTIONs:<br/>
+      COLLECTIONs: <br/>
       ----------
       <li  (click)="showButtons($event)" class="db-list-element" *ngFor="let coll of colls">
         {{coll}}
@@ -30,21 +30,32 @@
       <li (click)="count()" class="button-list-element">
         count()
       </li>
-    </ul>
-  </div>
-
-  <div *ngIf="docs" class="inline">
-    DOCUMENTs:<br/>
-    ----------
-    <ul>
-      <li  class="doc-list-element" *ngFor="let doc of docs">
-        {{doc|json}}
+      <li class="button-list-element">
+        <input size="50" [(ngModel)]="query" (keyup)="checkAndFind($event)" name="query" class="input-list-element" type="text" placeholder="find()">
       </li>
     </ul>
   </div>
 
+  <div *ngIf="docs" class="inline docs-div">
+    DOCUMENTs:<br/>
+    ----------<br/>
+    <ul *ngIf="docs.length>0">
+      <li  class="doc-list-element" *ngFor="let doc of docs">
+        {{doc|json}}
+      </li>
+    </ul>
+    <p *ngIf="docs.length==0">No documents founded.</p>
+  </div>
+
   <div *ngIf="counter" class="inline counter-panel">
     total documents: {{counter}}.
+  </div>
+
+
+  <div *ngIf="error" class="error-div">
+    ERROR OCCURED:<br/>
+    ------<br/>
+    {{error|json}}
   </div>
 
 </div>
