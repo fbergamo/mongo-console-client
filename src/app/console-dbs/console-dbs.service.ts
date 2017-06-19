@@ -24,4 +24,10 @@ export class ConsoleDbsService{
       {databaseName: databaseName, collectionName: collectionName}
       ).map( resp => resp.json());
   }
+
+  public count(databaseName: string, collectionName: string) {
+    return this.http.post('http://localhost:9000/count',
+      {databaseName: databaseName, collectionName: collectionName}
+    ).map( resp => resp.json());
+  }
 }

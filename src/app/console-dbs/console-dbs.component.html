@@ -27,6 +27,9 @@
       <li (click)="findAll()" class="button-list-element">
         findAll()
       </li>
+      <li (click)="count()" class="button-list-element">
+        count()
+      </li>
     </ul>
   </div>
 
@@ -38,6 +41,10 @@
         {{doc|json}}
       </li>
     </ul>
+  </div>
+
+  <div *ngIf="counter" class="inline counter-panel">
+    total documents: {{counter}}.
   </div>
 
 </div>

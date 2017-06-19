@@ -11,6 +11,7 @@ export class ConsoleDbsComponent implements OnInit {
   dbs: any[];
   colls: any[];
   docs: any[];
+  counter: number;
 
   databaseName: string;
   collectionName: string;
@@ -29,6 +30,7 @@ export class ConsoleDbsComponent implements OnInit {
   getCollection(e) {
     this.docs = null;
     this.colls = null;
+    this.counter = null;
     this.isButtonsShow = false;
     this.databaseName = e.srcElement.innerText;
 
@@ -38,8 +40,19 @@ export class ConsoleDbsComponent implements OnInit {
   }
 
   findAll() {
+    this.docs = null;
+    this.counter = null;
     this.consoleDbsSrv.findAll(this.databaseName, this.collectionName).subscribe(
       response => { this.docs = response; }
+    );
+  }
+
+
+  count() {
+    this.docs = null;
+    this.counter = null;
+    this.consoleDbsSrv.count(this.databaseName, this.collectionName).subscribe(
+      response => { this.counter = response; }
     );
   }
 
