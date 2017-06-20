@@ -33,6 +33,9 @@
       <li class="button-list-element">
         <input size="50" [(ngModel)]="query" (keyup)="checkAndFind($event)" name="query" class="input-list-element" type="text" placeholder="find()">
       </li>
+      <li class="button-list-element">
+        <input size="50" [(ngModel)]="insertQuery" (keyup)="checkAndInsertOne($event)" name="query-insert" class="input-list-element" type="text" placeholder="insertOne()">
+      </li>
     </ul>
   </div>
 

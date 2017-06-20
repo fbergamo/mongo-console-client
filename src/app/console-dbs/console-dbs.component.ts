@@ -18,13 +18,15 @@ export class ConsoleDbsComponent implements OnInit {
   collectionName: string;
   isButtonsShow: boolean;
   query: string;
+  insertQuery: string;
 
   constructor(private consoleDbsSrv: ConsoleDbsService) { }
 
   ngOnInit() {
     this.isButtonsShow = false;
     this.consoleDbsSrv.getDatabases().subscribe(
-      response => { this.dbs = response; }
+      response => { this.dbs = response; },
+      error => {this.error = error; }
     );
   }
 
@@ -57,6 +59,16 @@ export class ConsoleDbsComponent implements OnInit {
 
       this.consoleDbsSrv.find(this.databaseName, this.collectionName, this.query).subscribe(
         response => { this.docs = response; },
+        error => {this.error = error; }
+      );
+    }
+  }
+
+  checkAndInsertOne(e) {
+    if (e.key === 'Enter') {
+      this.cleanFields();
+      this.consoleDbsSrv.insertOne(this.databaseName, this.collectionName, this.insertQuery).subscribe(
+        response => { this.docs = [{message: 'InsertOne: document inserted.'}]; },
         error => {this.error = error; }
       );
     }
