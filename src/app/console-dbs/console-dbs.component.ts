@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ConsoleDbsService} from './console-dbs.service';
+import {QueryRequest} from '../../assets/QueryRequest';
 
 @Component({
   selector: 'app-console-dbs',
@@ -14,16 +15,15 @@ export class ConsoleDbsComponent implements OnInit {
   error: any;
   counter: number;
 
-  databaseName: string;
-  collectionName: string;
+  queryReq: QueryRequest;
   isButtonsShow: boolean;
-  query: string;
-  insertQuery: string;
+
 
   constructor(private consoleDbsSrv: ConsoleDbsService) { }
 
   ngOnInit() {
     this.isButtonsShow = false;
+    this.queryReq = new QueryRequest('', '', '');
     this.consoleDbsSrv.getDatabases().subscribe(
       response => { this.dbs = response; },
       error => {this.error = error; }
@@ -31,61 +31,36 @@ export class ConsoleDbsComponent implements OnInit {
   }
 
 
+  getResponse(responseEvent) {
+    this.cleanFields();
+    responseEvent.subscribe(
+      response => {
+        if (typeof response === 'number') {
+          this.counter = response; } else {
+          this.docs = response; }
+      },
+      error => {this.error = error; }
+    );
+  }
+
   getCollection(e) {
     this.cleanFields();
 
     this.colls = null;
     this.isButtonsShow = false;
-    this.databaseName = e.srcElement.innerText;
+    this.queryReq.databaseName = e.srcElement.innerText;
 
-    this.consoleDbsSrv.getCollection(this.databaseName).subscribe(
+    this.consoleDbsSrv.getCollection(this.queryReq.databaseName).subscribe(
       response => { this.colls = response; },
       error => {this.error = error; }
     );
   }
 
-  findAll() {
-    this.cleanFields();
-    this.consoleDbsSrv.findAll(this.databaseName, this.collectionName).subscribe(
-      response => { this.docs = response; },
-      error => {this.error = error; }
-    );
-  }
-
-
-  checkAndFind(e) {
-    if (e.key === 'Enter') {
-      this.cleanFields();
-
-      this.consoleDbsSrv.find(this.databaseName, this.collectionName, this.query).subscribe(
-        response => { this.docs = response; },
-        error => {this.error = error; }
-      );
-    }
-  }
-
-  checkAndInsertOne(e) {
-    if (e.key === 'Enter') {
-      this.cleanFields();
-      this.consoleDbsSrv.insertOne(this.databaseName, this.collectionName, this.insertQuery).subscribe(
-        response => { this.docs = [{message: 'InsertOne: document inserted.'}]; },
-        error => {this.error = error; }
-      );
-    }
-  }
-
-
-  count() {
-    this.cleanFields();
-    this.consoleDbsSrv.count(this.databaseName, this.collectionName).subscribe(
-      response => { this.counter = response; },
-      error => {this.error = error; }
-    );
-  }
 
   showButtons(e) {
+    this.queryReq.query = '';
     this.isButtonsShow = false;
-    this.collectionName = e.srcElement.innerText;
+    this.queryReq.collectionName = e.srcElement.innerText;
     this.isButtonsShow = true;
   }
 

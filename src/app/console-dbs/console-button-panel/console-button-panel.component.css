@@ -1,0 +1,27 @@
+.button-list-element{
+  border: 1px solid greenyellow;
+  padding: 2px;
+  cursor: pointer;
+  margin-bottom: 3px;
+}
+
+.button-list-element:hover{
+  border: 1px solid black;
+  background-color: greenyellow;
+  color:black;
+  cursor: pointer;
+  padding: 2px;
+  margin-bottom: 3px;
+}
+
+.button-list{
+  list-style-type: none;
+}
+
+.input-list-element{
+  background-color: black;
+  border: 0 solid;
+  color: greenyellow;
+  font-family: inherit;
+  outline:none;
+}
