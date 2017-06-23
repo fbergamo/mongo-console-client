@@ -37,8 +37,8 @@ export class ConsoleDbsComponent implements OnInit {
   getResponse(responseEvent) {
     this.cleanFields();
     responseEvent.subscribe(
-      response => {this.docsResponse.resp = response, this.docsResponse.error = false; },
-      error => {this.docsResponse.resp = error, this.docsResponse.error = true; }
+      response => {this.docsResponse.resp = response; this.docsResponse.error = false; },
+      error => {this.docsResponse.resp = error; this.docsResponse.error = true; }
     );
   }
 
