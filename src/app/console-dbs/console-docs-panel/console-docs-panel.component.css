@@ -1,0 +1,10 @@
+.error-div{
+  color: #ff3e40;
+  clear:both;
+}
+
+.doc-list-element:hover{
+  background-color: greenyellow;
+  color:black;
+  cursor:default;
+}

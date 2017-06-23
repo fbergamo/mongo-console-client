@@ -1,14 +1,16 @@
-<ul class="button-list">
-  <li (click)="findAll()" class="button-list-element">
-    findAll()
-  </li>
-  <li (click)="count()" class="button-list-element">
-    count()
-  </li>
-  <li class="button-list-element">
-    <input size="50" [(ngModel)]="findQuery" (keyup)="checkAndFind($event)" name="query" class="input-list-element" type="text" placeholder="find()">
-  </li>
-  <li class="button-list-element">
-    <input size="50" [(ngModel)]="insertQuery" (keyup)="checkAndInsertOne($event)" name="query-insert" class="input-list-element" type="text" placeholder="insertOne()">
-  </li>
-</ul>
+<div>
+  <ul class="button-list">
+    <li (click)="findAll()" class="button-list-element">
+      findAll()
+    </li>
+    <li (click)="count()" class="button-list-element">
+      count()
+    </li>
+    <li class="button-list-element">
+      <input size="50" [(ngModel)]="findQuery" (keyup)="checkAndFind($event)" name="query" class="input-list-element" type="text" placeholder="find()">
+    </li>
+    <li class="button-list-element">
+      <input size="50" [(ngModel)]="insertQuery" (keyup)="checkAndInsertOne($event)" name="query-insert" class="input-list-element" type="text" placeholder="insertOne()">
+    </li>
+  </ul>
+</div>

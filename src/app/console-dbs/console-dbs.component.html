@@ -22,30 +22,12 @@
   </div>
 
 
-  <div *ngIf="isButtonsShow" class="inline">
-    <app-console-button-panel (responseEmit)="getResponse($event)" [queryReq]="queryReq"></app-console-button-panel>
+  <div class="inline" *ngIf="isButtonsShow">
+    <app-console-button-panel  (responseEmit)="getResponse($event)" [queryReq]="queryReq"></app-console-button-panel>
   </div>
 
-  <div *ngIf="docs" class="inline docs-div">
-    DOCUMENTs:<br/>
-    ----------<br/>
-    <ul *ngIf="docs.length>0">
-      <li  class="doc-list-element" *ngFor="let doc of docs">
-        {{doc|json}}
-      </li>
-    </ul>
-    <p *ngIf="docs.length==0">No documents found.</p>
-  </div>
-
-  <div *ngIf="counter" class="inline counter-panel">
-    total documents: {{counter}}.
-  </div>
-
-
-  <div *ngIf="error" class="error-div">
-    ERROR OCCURED:<br/>
-    ------<br/>
-    {{error|json}}
+  <div class="inline docs-div" *ngIf="docsResponse.resp">
+   <app-console-docs-panel [docsResponse]="docsResponse"></app-console-docs-panel>
   </div>
 
 </div>

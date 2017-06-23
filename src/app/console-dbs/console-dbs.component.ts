@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ConsoleDbsService} from './console-dbs.service';
 import {QueryRequest} from '../../assets/QueryRequest';
+import {DocsResponse} from '../../assets/DocsResponse';
 
 @Component({
   selector: 'app-console-dbs',
@@ -18,12 +19,14 @@ export class ConsoleDbsComponent implements OnInit {
   queryReq: QueryRequest;
   isButtonsShow: boolean;
 
+  docsResponse: DocsResponse;
 
   constructor(private consoleDbsSrv: ConsoleDbsService) { }
 
   ngOnInit() {
     this.isButtonsShow = false;
     this.queryReq = new QueryRequest('', '', '');
+    this.docsResponse = new DocsResponse('', false);
     this.consoleDbsSrv.getDatabases().subscribe(
       response => { this.dbs = response; },
       error => {this.error = error; }
@@ -34,12 +37,8 @@ export class ConsoleDbsComponent implements OnInit {
   getResponse(responseEvent) {
     this.cleanFields();
     responseEvent.subscribe(
-      response => {
-        if (typeof response === 'number') {
-          this.counter = response; } else {
-          this.docs = response; }
-      },
-      error => {this.error = error; }
+      response => {this.docsResponse.resp = response, this.docsResponse.error = false; },
+      error => {this.docsResponse.resp = error, this.docsResponse.error = true; }
     );
   }
 

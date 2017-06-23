@@ -1,0 +1,26 @@
+<div>
+  <div *ngIf="!isErrorReponse()">
+    DOCUMENTs:<br/>
+    ----------<br/>
+    <ul *ngIf="docsResponse.resp.length>0">
+      <li  class="doc-list-element" *ngFor="let doc of docsResponse.resp">
+        {{doc|json}}
+      </li>
+    </ul>
+    <p *ngIf="docsResponse.resp.length==0">no documents found.</p>
+    <p *ngIf="isCountResponse()">total documents: {{docsResponse.resp}}.</p>
+  </div>
+
+
+
+
+
+
+  <div *ngIf="isErrorReponse()" class="error-div">
+    ERROR OCCURED:<br/>
+    ---------<br/>
+    {{docsResponse.resp|json}}
+  </div>
+</div>
+
+

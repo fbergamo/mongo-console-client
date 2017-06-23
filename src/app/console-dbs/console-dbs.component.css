@@ -4,22 +4,7 @@
   cursor: pointer;
 }
 
-.doc-list-element:hover{
-  background-color: greenyellow;
-  color:black;
-}
 
-
-.counter-panel{
-  margin-top:20px;
-  padding:10px;
-}
-
-
-.error-div{
-  color:red;
-  clear:both;
-}
 
 .docs-div{
   clear:both;
