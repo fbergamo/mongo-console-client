@@ -15,10 +15,15 @@ export class ConsoleDocsPanelComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log(this.docsResponse);
   }
 
   isErrorReponse() {
    return this.docsResponse.error;
+  }
+
+  isOperationResponse() {
+    return typeof this.docsResponse.resp === 'boolean';
   }
 
 
