@@ -17,7 +17,7 @@ export class ConsoleDocsPanelComponent implements OnInit {
   ngOnInit() {
   }
 
-  isErrorReponse() {
+  isErrorResponse() {
    return this.docsResponse.error;
   }
 
